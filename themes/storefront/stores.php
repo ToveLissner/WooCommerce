@@ -31,7 +31,7 @@ if ($query->have_posts()) {
         echo '<h4> Öppettider </h4>';
         echo '<h5>Helgfria vardagar: ' . $open_time . '</h5>';
         echo '<h5>Lördagar: ' . $open_time_saturday . '</h5>';
-        echo '<h5>Söndagar: ' . $open_time_sunday . '</h5>';
+        echo '<h5>Söndag/Röda dagar: ' . $open_time_sunday . '</h5>';
         if ($deviant_time) {
         echo '<h5>Avvikande öppettider: ' . $deviant_time . '</h5>';
         echo '<br>';
