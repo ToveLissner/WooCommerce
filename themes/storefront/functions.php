@@ -65,6 +65,50 @@ if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin()
 	require 'inc/nux/class-storefront-nux-starter-content.php';
 }
 
+// Tove lägger till 
+
+// Skapa en anpassad posttyp för fysiska butiker
+function create_custom_post_type_stores() {
+    $labels = array(
+        'name' => 'Butiker',
+        'singular_name' => 'Butik',
+        'add_new' => 'Lägg till ny butik',
+        'add_new_item' => 'Lägg till ny butik',
+        'edit_item' => 'Redigera butik',
+        'new_item' => 'Ny butik',
+        'view_item' => 'Visa butik',
+        'search_items' => 'Sök butiker',
+        'not_found' => 'Inga butiker hittades',
+        'not_found_in_trash' => 'Inga butiker hittades i papperskorgen',
+        'parent_item_colon' => 'Parent Item:',
+        'menu_name' => 'Butiker',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => 'En lista över fysiska butiker.',
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'butiker'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+    );
+
+    register_post_type('butiker', $args);
+}
+
+// Kör funktionen vid initiering av WordPress
+add_action('init', 'create_custom_post_type_stores');
+
+
 /**
  * Note: Do not add any custom code here. Please use a custom plugin so that your customizations aren't lost during updates.
  * https://github.com/woocommerce/theme-customisations
