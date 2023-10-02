@@ -12,7 +12,7 @@ $args = array(
 
 $query = new WP_Query($args);
 
-if ($query->have_posts()) :
+if ($query->have_posts()) {
     while ($query->have_posts()) { $query->the_post();
 
         $address = get_field('adress');
@@ -25,20 +25,23 @@ if ($query->have_posts()) :
 
 
         echo '<h2>' . get_the_title() . '</h2>';
-        echo '<p>Adress: ' . $address . '</p>';
-        echo '<p>Postkod: ' . $postcode . '</p>';
-        echo '<p>Postadress: ' . $postaddress . '</p>';
+        echo '<h4> Adress </h4>';
+        echo '<h5>' . $address . ',' . ' ' . $postcode . ' ' . $postaddress .'</h5>';
+
         echo '<h4> Öppettider </h4>';
-        echo '<p>Helgfria vardagar: ' . $open_time . '</p>';
-        echo '<p>Lördagar: ' . $open_time_saturday . '</p>';
-        echo '<p>Söndagar: ' . $open_time_sunday . '</p>';
+        echo '<h5>Helgfria vardagar: ' . $open_time . '</h5>';
+        echo '<h5>Lördagar: ' . $open_time_saturday . '</h5>';
+        echo '<h5>Söndagar: ' . $open_time_sunday . '</h5>';
         if ($deviant_time) {
-        echo '<p>Avvikande öppettider: ' . $deviant_time . '</p>';
-        };
+        echo '<h5>Avvikande öppettider: ' . $deviant_time . '</h5>';
+        echo '<br>';
+    } else {
+            echo '<br>';
+        }
     };
-else :
+} else {
     echo '<p>Inga butiker hittades.</p>';
-endif;
+};
 
 get_footer();
 ?>
